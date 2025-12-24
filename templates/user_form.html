@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+        <div class="card mt-4">
+            <div class="card-header bg-white py-3">
+                <h4 class="mb-0 text-center">{{ 'Редактирование' if user else 'Создание' }} пользователя</h4>
+            </div>
+            <div class="card-body p-4">
+                <form method="POST">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Полное имя</label>
+                        <input type="text" class="form-control" id="name" name="name"
+                               value="{{ user.name if user else '' }}" placeholder="Иван Иванов" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email адрес</label>
+                        <input type="email" class="form-control" id="email" name="email"
+                               value="{{ user.email if user else '' }}" placeholder="name@example.com" required>
+                    </div>
+
+                    <div class="d-grid gap-2 mt-4">
+                        <button type="submit" class="btn btn-success btn-lg">
+                            {{ 'Сохранить изменения' if user else 'Создать пользователя' }}
+                        </button>
+                        <a href="/users" class="btn btn-outline-secondary">Отмена</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
